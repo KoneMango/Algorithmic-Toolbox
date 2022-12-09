@@ -1,4 +1,6 @@
 import cv2
+import os
+os.chdir('C:\\Users\\will\Documents\\GitHub\\Algorithmic Toolbox\\videoCapturetest')
 
 # 加载人脸检测器
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
