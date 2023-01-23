@@ -1,9 +1,11 @@
 import cv2
 import os
-os.chdir('C:\\Users\\will\Documents\\GitHub\\Algorithmic Toolbox\\videoCapturetest')
+os.chdir('C:\\Users\\will\Documents\\GitHub\\Algorithmic_Toolbox\\videoCapturetest')
 
-# 加载人脸检测器
+# 加载人脸检测器,级联分类器
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+#DNN 人脸检测器
+#face_cascade = cv2.dnn.readNetFromCaffe('deploy.prototxt.txt', 'res10_300x300_ssd_iter_140000.caffemodel')
 
 # 打开摄像头
 cap = cv2.VideoCapture(0)
@@ -17,6 +19,12 @@ while True:
 
     # 检测图像中的人脸
     faces = face_cascade.detectMultiScale(gray_img, 1.1, 4)
+
+    #使用DNN检测人脸
+    # blob = cv2.dnn.blobFromImage(img, 1.0, (300, 300), (104.0, 177.0, 123.0))
+    # face_cascade.setInput(blob)
+    # faces = face_cascade.forward()
+
 
     # 在图像中标记人脸
     for (x, y, w, h) in faces:
